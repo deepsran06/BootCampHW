@@ -52,6 +52,15 @@ output_file = os.path.join("election_results.txt")
 # Open Output File
 writer = open(output_file, mode = "w")
 
+# Write into file using 'write'
+writer.write("Election Results" + "\n" +
+             break_line + "\n" +
+             f"Total Votes: " + str(votes) + "\n")
+for name, num in vote_percent.items():
+    writer.write(name + ": " + num + "\n")
+writer.write(break_line + "\n" +
+             f"Winner: " + str(winner) + "\n" +
+             break_line)
 
 
 
