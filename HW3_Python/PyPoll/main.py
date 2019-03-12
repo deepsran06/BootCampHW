@@ -46,6 +46,14 @@ with open(file, newline="") as csvfile:
     print(f"Winner: " + str(winner))
     print(break_line)
 
+# Set Variable for Output File
+output_file = os.path.join("election_results.txt")
+
+# Open Output File
+writer = open(output_file, mode = "w")
+
+
+
 
 
 
