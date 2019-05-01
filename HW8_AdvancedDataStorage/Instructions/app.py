@@ -95,15 +95,6 @@ def tobs():
     # Return the results
     return jsonify(tobs)
 
-    # Alternative solution
-    # Query tobs
-    # tobs_results = session.query(Measurement.date, Measurement.tobs).filter(Measurement.date >= "2016-08-23").all()
-    #
-    # # Convert list of tuples into normal list
-    # tobs = list(np.ravel(tobs_results))
-    #
-    # return jsonify(tobs)
-
 # @app.route("/api/v1.0/temp/<start>")
 # @app.route("/api/v1.0/temp/<start>/<end>")
 
