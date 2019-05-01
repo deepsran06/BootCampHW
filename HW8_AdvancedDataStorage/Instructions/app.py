@@ -75,6 +75,7 @@ def precipitation():
     # all_measurements = list(np.ravel(precip_results))
     # return jsonify(all_measurements)
 
+
 @app.route("/api/v1.0/stations")
 def stations():
     """Return station list"""
@@ -84,21 +85,39 @@ def stations():
     stations = list(np.ravel(stat_results))
     return jsonify(stations)
 
+@app.route("/api/v1.0/tobs")
+def tobs():
+    """Return a list of all measurments"""
 
+    # Calculate the date 1 year ago from last date in database
+    last_year = dt.date(2017, 8, 23) - dt.timedelta(days=365)
 
+    # Query the primary station for all tobs from the last year
+    tobs_results = session.query(Measurement.date, Measurement.tobs).filter(Measurement.date >= last_year).all()
 
+    # Unravel results into a 1D array and convert to a list
+    tobs = list(np.ravel(tobs_results))
 
+    # Return the results
+    return jsonify(tobs)
 
+    # Alternative solution
+    # Query tobs
+    # tobs_results = session.query(Measurement.date, Measurement.tobs).filter(Measurement.date >= "2016-08-23").all()
+    #
+    # # Convert list of tuples into normal list
+    # tobs = list(np.ravel(tobs_results))
+    #
+    # return jsonify(tobs)
 
-
-
-
-
-
-
+# @app.route("/api/v1.0/temp/<start>")
+# @app.route("/api/v1.0/temp/<start>/<end>")
+# def stats(start=None, end=None):
+#     """Return TMIN, TAVG, TMAX."""
 
 
 
 
 if __name__ == '__main__':
     app.run(debug=True)
+
