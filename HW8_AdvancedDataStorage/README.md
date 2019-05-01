@@ -1,2 +1,2 @@
-Solution in the starter code <n/>
+Solution in the starter code
 Soltion for Flask in python file
