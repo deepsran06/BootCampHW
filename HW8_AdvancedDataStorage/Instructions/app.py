@@ -63,20 +63,25 @@ def precipitation():
     last_year = dt.date(2017, 8, 23) - dt.timedelta(days=365)
 
     # Query precipitation results last year
-    precipitation = session.query(Measurement.date, Measurement.prcp). \
+    precip_results = session.query(Measurement.date, Measurement.prcp). \
         filter(Measurement.date >= last_year).all()
 
     # Create a dictionary and jsonify results to read
-    precip = {date: prcp for date, prcp in precipitation}
-    return jsonify(precip)
+    # Attempted to use list comprehension
+    precipitation = {date: prcp for date, prcp in precip_results}
+    return jsonify(precipitation)
+
+    # Using ravel instead of dictionary and list comprehension
+    # all_measurements = list(np.ravel(precip_results))
+    # return jsonify(all_measurements)
 
 @app.route("/api/v1.0/stations")
 def stations():
     """Return station list"""
-    results = session.query(Station.station).all()
+    stat_results = session.query(Station.station).all()
 
     # Use 'ravel' from numpy to list the stations
-    stations = list(np.ravel(results))
+    stations = list(np.ravel(stat_results))
     return jsonify(stations)
 
 
