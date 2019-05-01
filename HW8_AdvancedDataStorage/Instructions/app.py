@@ -112,10 +112,6 @@ def tobs():
 
 # @app.route("/api/v1.0/temp/<start>")
 # @app.route("/api/v1.0/temp/<start>/<end>")
-# def stats(start=None, end=None):
-#     """Return TMIN, TAVG, TMAX."""
-
-
 
 
 if __name__ == '__main__':
