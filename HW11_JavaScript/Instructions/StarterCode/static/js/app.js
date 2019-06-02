@@ -39,5 +39,6 @@ function handleClick() {
 
 
 d3.selectAll("#filter-btn").on("click", handleClick);
+
  // using the code and data build the table into the index 
 buildTable(tableData);
