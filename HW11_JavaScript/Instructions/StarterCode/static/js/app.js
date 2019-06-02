@@ -17,10 +17,10 @@ function buildTable(data) {
         Object.values(tableRow).forEach((value) => {
             var tableCell = row.append("td");
                 tableCell.text(value);
-        };
+        }
     );
  });
-};
+}
 
 
 function handleClick() {
