@@ -10,6 +10,9 @@ var tbody = d3.select("tbody");
 // using arrow and forEach go through the data
 // append values for the table by each row and cell
 
+// error in table display
+// fixed error by updating semicolons
+
 function buildTable(data) {
     tbody.html("");
     data.forEach((tableRow) => {
@@ -24,6 +27,7 @@ function buildTable(data) {
 
 
 function handleClick() {
+    // do not let page refresh
     d3.event.preventDefault();
     var date = d3.select("#datetime").property("value");
     let filteredData = tableData;
@@ -35,5 +39,5 @@ function handleClick() {
 
 
 d3.selectAll("#filter-btn").on("click", handleClick);
-  
+ // using the code and data build the table into the index 
 buildTable(tableData);
