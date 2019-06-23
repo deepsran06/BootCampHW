@@ -24,6 +24,19 @@ var link = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.g
 d3.json(link, function(data) {
 
   // 
+  
   // Creating a GeoJSON layer with the retrieved data from 'link' above
-  L.geoJson(data).addTo(myMap);
+  L.geoJson(data).addTo(myMap); {
+  
+    // Binding a pop-up to each layer
+  // look at geojson to add our popup including magnitude and location
+  onEachFeature: function(feature, layer) {
+    layer.bindPopup("Magnitude: " + feature.properties.mag + "<br>Location: " + feature.properties.place);
+  }.addTo(map);
+  
+  // create a legend for the bottom right corner
+  var legend = L.control({
+    position: "bottomright"
+  });
+  }
 });
