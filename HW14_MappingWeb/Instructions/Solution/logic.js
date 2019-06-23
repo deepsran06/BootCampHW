@@ -27,7 +27,3 @@ d3.json(link, function(data) {
   // Creating a GeoJSON layer with the retrieved data from 'link' above
   L.geoJson(data).addTo(map);
 });
-
-// Here we make an AJAX call that retrieves our earthquake geoJSON data.
-d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.geojson", function(data) {
-  
